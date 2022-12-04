@@ -3,14 +3,14 @@
   tasks:
   - name: create directory
     file:
-      path: /home/ansible/tmp
+      path: /tmp/work_ansible/test_dir
       state: directory
-      owner: ansible
+      owner: root
       mode: 0644
 
   - name: copy file
     copy:
       src: /etc/hosts
-      dest: /home/ansible/tmp/hosts
-      owner: ansible
+      dest: /tmp/work_ansible/test_dir/hosts
+      owner: root
       mode: 0644
