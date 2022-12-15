@@ -1,0 +1,33 @@
+---
+firewall_enabled: yes
+
+firewall_inbound_rules_services:
+  - zone: public
+    services:
+      - name: dhcpv-client
+        state: enabled
+      - name: ssh
+        state: enabled
+      - name: ntp
+        state: enabled
+
+firewall_inbound_rules_services_extra: [ ]
+
+firewall_inbound_rules_ports:
+  - zone: public
+    ports:
+      #test
+      - ports: 8500/tcp
+        state: enabled
+
+firewall_inbound_rules_ports_extra: [ ]
+
+firewall_outbound_rules:
+  - priority: 9999
+    args: "-m state --state NEW -d 0.0.0.0/0 -j REJECT"
+  - priority: 0
+    args: "-m icmp -p --icmp-type echo-request -j ACCEPT"
+  - priority: 0
+    args: "-m state --state NEW -d 127.0.0.1 -j ACCEPT"
+
+firewall_outbound_rules_extra: [ ]
