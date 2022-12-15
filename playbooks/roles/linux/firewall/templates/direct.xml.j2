@@ -3,6 +3,6 @@
 {% for rule in (firewall_inbound_rules_direct + firewall_inbound_rules_direct_extra) %}
     <rule table="filter" chain="INPUT" ipv="ipv4" priority="{{ rule.priority }}">{{ rule.args }}</rule>
 {% endfor %}
-{% for rule in (firewall_outbound_rules_direct + firewall_outbound_rules_extra) %}
+{% for rule in (firewall_outbound_rules_direct + firewall_outbound_rules_direct_extra) %}
     <rule table="filter" chain="OUTPUT" ipv="ipv4" priority="{{ rule.priority }}">{{ rule.args }}</rule>
 {% endfor %}
