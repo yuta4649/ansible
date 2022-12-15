@@ -20,6 +20,10 @@ firewall_inbound_rules_ports:
       - ports: 8500/tcp
         state: enabled
 
+firewall_inbound_rules_direct: [ ]
+
+firewall_inbound_rules_direct_extra: [ ]
+
 firewall_inbound_rules_ports_extra: [ ]
 
 firewall_outbound_rules:
