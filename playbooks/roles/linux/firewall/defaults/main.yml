@@ -26,7 +26,7 @@ firewall_inbound_rules_direct_extra: [ ]
 
 firewall_inbound_rules_ports_extra: [ ]
 
-firewall_outbound_rules:
+firewall_outbound_rules_direct:
   - priority: 9999
     args: "-m state --state NEW -d 0.0.0.0/0 -j REJECT"
   - priority: 0
@@ -34,4 +34,4 @@ firewall_outbound_rules:
   - priority: 0
     args: "-m state --state NEW -d 127.0.0.1 -j ACCEPT"
 
-firewall_outbound_rules_extra: [ ]
+firewall_outbound_rules_direct_extra: [ ]
