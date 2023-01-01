@@ -1,7 +1,7 @@
 ---
 - name: main | Deploy /etc/hosts
   copy:
-    src: "hosts"
+    src: "hosts.txt"
     dest: /etc/hosts
     owner: root
     group: root
