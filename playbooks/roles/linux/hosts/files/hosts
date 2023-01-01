@@ -1,0 +1,8 @@
+127.0.0.1   localhost localhost.localdmain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdmain localhost6 localhost6.localdomain6
+
+####################################
+# Azure VM                         #
+####################################
+10.0.0.4    linux-ca01
+10.0.0.5    linux-tst01
