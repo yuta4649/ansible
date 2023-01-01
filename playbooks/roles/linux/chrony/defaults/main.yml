@@ -1,0 +1,4 @@
+---
+chrony_use: true
+chrony_host_list:
+  - localhost

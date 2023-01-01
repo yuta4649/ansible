@@ -1,0 +1,21 @@
+---
+- name: main | Install chrony Packages
+  dnf:
+    name: chrony
+    state: present
+  become: true
+
+- name: main | Set /etc/chrony.conf
+  template:
+    src: chrony.conf.j2
+    dest: /etc/chrony.conf
+  become: ture
+
+- name: main | Set Systemd chronyd
+  systemd:
+    name: chronyd.service
+    state: restarted
+    enabled: yes
+  changed_when: false
+  when: chrony_use
+  become: true
