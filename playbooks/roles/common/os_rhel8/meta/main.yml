@@ -1,1 +1,16 @@
 ---
+dependencies:
+  - { role: linux/hosts, tags: ['hosts'] }
+  - { role: linux/hostname, tags: ['hostname'] }
+  - { role: linux/timezone, tags: ['timezone'] }
+  - { role: linux/dnf, tags: ['dnf'] }
+  - { role: linux/package, tags: ['package'] }
+  - { role: linux/suders, tags: ['package'] }
+  - { role: linux/nsswitch, tags: ['nsswitch'] }
+  - { role: linux/ssh, tags: ['ssh'] }
+  - { role: linux/mount, tags: ['mount'] }
+  - { role: linux/dir, tags: ['dir'] }
+  - { role: linux/pam, tags: ['pam'] }
+  - { role: linux/service, tags: ['service'] }
+  - { role: linux/chrony, tags: ['chrony'] }
+  - { role: linux/selinux, tags: ['selinux'] }

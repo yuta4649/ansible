@@ -2,5 +2,3 @@
 - hosts: linux-tst
   roles: 
     - { role: common/os_rhel8, tags: ['common']}
-    - { role: linux/dnf, tags: ['dnf']}
-    - { role: linux/firewall, tags: ['firewall']}
