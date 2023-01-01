@@ -1,0 +1,12 @@
+---
+- name: main | Mount
+  mount:
+    path: "{{ item.path }}"
+    src: "{{ item.src }}"
+    fstype: "{{ item.fstype }}"
+    opts: "{{ item.opts }}"
+    dump: "{{ item.dump | default(omit) }}"
+    passno: "{{ item.passno | default(omit) }}"
+    state: "{{ item.state }}"
+  loop: "{{ mount_list + mount_list_extra }}"
+  become: true
