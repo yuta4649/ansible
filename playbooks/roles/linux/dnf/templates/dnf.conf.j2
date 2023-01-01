@@ -1,0 +1,8 @@
+# {{ ansible_managed }}
+[main]
+gpgcheck=1
+installonly_limit=3
+clean_requirements_on_remove=True
+best=Trueskip_if_unavailable=False
+http_caching=packages
+excludepkgs={{ dnf_excludepkgs }}
