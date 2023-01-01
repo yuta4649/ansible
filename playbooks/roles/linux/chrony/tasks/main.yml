@@ -9,7 +9,7 @@
   template:
     src: chrony.conf.j2
     dest: /etc/chrony.conf
-  become: ture
+  become: true
 
 - name: main | Set Systemd chronyd
   systemd:
