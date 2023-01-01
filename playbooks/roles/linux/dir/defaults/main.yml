@@ -1,0 +1,15 @@
+---
+dir_list:
+  - owner: root
+    group: root
+    mode: '0755'
+    path_list:
+      - /admin
+      - /wells
+  - owner: root
+    group: root
+    mode: '0775'
+    path_list:
+      - /wells/log/seclog
+
+dir_list_extra:

@@ -1,0 +1,10 @@
+---
+- name: main | Create directory
+  file:
+    path: "{{ item.1 }}"
+    state: directory
+    owner: "{{ item.0.owner }}"
+    group: "{{ item.0.group }}"
+    mode: "{{ item.0.mode }}"
+  loop: "{{ (dir_list + dir_list_extra) | subelements('path_list') }}"
+  become: true
