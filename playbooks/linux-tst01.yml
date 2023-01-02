@@ -1,4 +1,4 @@
 ---
-- hosts: linux-tst
+- hosts: linux-tst01
   roles: 
     - { role: common/os_rhel8, tags: ['common']}
