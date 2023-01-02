@@ -1,0 +1,7 @@
+---
+sudoers_user_list:
+  - ansible
+    host: "ALL=(ALL)"
+    command: "NOPASSWD: ALL"
+
+sudoers_user_list_extra: []

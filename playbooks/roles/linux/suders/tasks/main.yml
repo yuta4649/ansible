@@ -1,0 +1,9 @@
+---
+- name: main | Deploy configration
+  template:
+    src: sudoers.j2
+    dest: /etc/sudoers
+    owner: root
+    group: root
+    mode: '0440'
+  become: true
