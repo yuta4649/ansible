@@ -1,0 +1,5 @@
+---
+- name: main | Set hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
+  become: true
