@@ -1,0 +1,16 @@
+---
+- name: main | Set service enable
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enable: yes
+  loop: "{{ service_enable_list + service_enable_list_extra }}"
+  become: true
+
+- name: main | Set service disable
+  systemd:
+    name: "{{ item }}"
+    state: stopped
+    enabled: no
+  loop: "{{ service_disable_list + service_disable_list_extra }}"
+  become: true

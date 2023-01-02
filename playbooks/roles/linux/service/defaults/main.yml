@@ -1,0 +1,26 @@
+---
+service_enable_list:
+  - cpuowner
+  - microcode
+
+service_enable_list_extra: []
+
+service_disable_list:
+  - auditd
+  - import-state
+  - iscsi-onboot
+  - iscsi
+  - libstoragemgmt
+  - lvm2-monitor
+  - mcelog
+  - mdmonitor
+  - multipathd
+  - nis-domainname
+  - rhsmcertd
+  - selinux-autorelabel-mark
+  - smartd
+  #- sssd
+  - systemd-resolved
+  - vdo
+
+service_disable_list_extra: []
