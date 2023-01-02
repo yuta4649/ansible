@@ -1,2 +1,4 @@
 ---
 - hosts: linux-ca01
+  roles: 
+    - { role: common/os_rhel8, tags: ['common']}
