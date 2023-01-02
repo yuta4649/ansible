@@ -1,0 +1,6 @@
+---
+- name: main | Restart sshd service
+  systemd:
+    name: sshd
+    state: restarted
+  become: true

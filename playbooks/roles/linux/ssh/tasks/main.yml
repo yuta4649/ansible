@@ -1,0 +1,17 @@
+---
+- name: main | Modify sshd config
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: '0600'
+  notify: "main | Enable sshd service"
+  become: true
+
+- name: main | Enable sshd service
+  systemd:
+    name: sshd
+    state: started
+    enabled: yes
+  become: true
