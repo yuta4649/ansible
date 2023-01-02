@@ -1,0 +1,41 @@
+---
+- name: main | Check custom profile directory
+  stat: path=/etc/authselect/custom/{{ profile_name }}
+  register: pam_dir
+
+- name: main | Create custom profile
+  shell: authselect create-profile {{ profile_name }} -b sssd
+  register: result
+  become: true
+  changed_when: false
+  when: not pam_dir.stat.exists
+
+- name: main | Select custom profile
+  shell: authselect select custom/{{ profile_name }} with-silent-lastlog with-faillock
+  register: result
+  become: true
+  changed_when: false
+
+- name: main | Modify nsswitch.conf configuration
+  copy:
+    src: nsswitch.conf
+    dest: /etc/authselect/custom/{{ profile_name }}/nsswitch.conf
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
+- name: main | Modify user-nsswitch.conf configuration
+  copy:
+    src: user-nsswitch.conf
+    dest: /etc/authselect/custom/{{ profile_name }}/user-nsswitch.conf
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
+- name: main | Apply settings
+  shell: authselect apply-changes
+  register: result
+  become: true
+  changed_when: false
