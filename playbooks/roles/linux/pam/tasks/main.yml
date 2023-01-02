@@ -1,0 +1,4 @@
+---
+- name: main | Check custom profile directory
+  stat: path=/etc/authselect/custom/{{ profile_name }}
+  register: pam_dir

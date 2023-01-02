@@ -1,0 +1,17 @@
+---
+- name: disable | Check SELinux Command
+  shell: which selinuxenabled > /dev/null && /usr/sbin/selinuxenabled ; echo $?
+  register: resp_selinux
+  changed_when: false
+
+- name: disable | Execute Disable SELINUX
+  shell: setenforce 0
+  when: resp_selinux == 0
+
+- name: disable | Deploy config file
+  template:
+    src: selinux.j2
+    dest: /etc/selinux/config
+    owner: root
+    group: root
+    mode: "0644"
