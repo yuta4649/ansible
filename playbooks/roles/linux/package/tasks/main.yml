@@ -1,0 +1,60 @@
+---
+- name: main | Install packages
+  dnf:
+    name: "{{ install_package + install_package_extra }}"
+    state: installed
+  become: true
+
+- name: main | Install group packages
+  dnf:
+    name: "{{ install_group_package + install_group_package_extra }}"
+    state: installed
+  become: true
+
+- name: main | Uninstall packages
+  dnf:
+    name: "{{ uninstall_package + uninstall_package_extra }}"
+    state: absent
+  become: true
+
+- name: main | Create temporary dir
+  tempfile:
+    state: directory
+    suffix: package
+  register: package_temp_dir
+  changed_when: false
+
+- name: main | Copy all rpm files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ package_temp_dir.path  }}"
+    owner: root
+    group: root
+    mode: '0644'
+  with_fileglob: "*rpm"
+  changed_when: false
+  when: package_temp_dir.path is defined
+  become: true
+
+- name: main | Find all rpm files
+  find:
+    paths: "{{ package_temp_dir.path }}"
+    patterns: "*rpm"
+  register: package_rpm_list
+  changed_when: false
+  when: package_temp_dir.path is defined
+
+- name: main | Install local packages
+  dnf:
+    name: "{{ package_rpm_list.files | map(attribute='path') | list }}"
+    state: installed
+  become: true
+  when: package_rpm_list.files is defined
+
+- name: main | Delete temporary dir
+  file:
+    path: "{{ package_temp_dir.path }}"
+    state: absent
+  changed_when: false
+  when: package_temp_dir.path is defined
+  become: true
