@@ -1,6 +1,6 @@
 ---
 service_enable_list:
-  - cpuower
+  - cpupower
   - microcode
 
 service_enable_list_extra: []
