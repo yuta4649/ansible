@@ -1,3 +1,4 @@
 ---
 - import_playbook: linux-ca01.yml
 - import_playbook: linux-tst01.yml
+- import_playbook: linux-common.yml
