@@ -6,7 +6,7 @@
     owner: root
     group: root
     mode: '0600'
-  notify: "main | Enable sshd service"
+  notify: "main | Restart sshd service"
   become: true
 
 - name: main | Enable sshd service
