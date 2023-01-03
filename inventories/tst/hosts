@@ -3,3 +3,7 @@ linux-ca01
 
 [linux-tst01]
 linux-tst01
+
+[linux:children]
+linux-ca01
+linux-tst01

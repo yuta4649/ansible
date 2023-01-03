@@ -1,0 +1,5 @@
+---
+- hosts: linux
+  roles:
+    - { role: linux/group, tags: ['group'] }
+    - { role: linux/user, tags: ['user'] }
