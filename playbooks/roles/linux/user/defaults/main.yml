@@ -8,7 +8,7 @@ user_list:
     ssh_key_file: /root/.ssh/id_rsa
   - name: azureuser
     uid: 1000
-    group: azure
+    group: azureuser
   - name: ansible
     uid: 1010
     group: ansible
