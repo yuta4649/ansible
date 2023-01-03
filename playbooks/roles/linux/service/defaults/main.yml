@@ -8,8 +8,8 @@ service_enable_list_extra: []
 service_disable_list:
   - auditd
   - import-state
-  - iscsi-onboot
-  - iscsi
+  # - iscsi-onboot
+  # - iscsi
   - libstoragemgmt
   - lvm2-monitor
   - mcelog
