@@ -5,7 +5,7 @@ dependencies:
   - { role: linux/timezone, tags: ['timezone'] }
   - { role: linux/dnf, tags: ['dnf'] }
   - { role: linux/package, tags: ['package'] }
-  - { role: linux/suders, tags: ['package'] }
+  - { role: linux/sudoers, tags: ['sudoers'] }
   - { role: linux/nsswitch, tags: ['nsswitch'] }
   - { role: linux/ssh, tags: ['ssh'] }
   - { role: linux/mount, tags: ['mount'] }

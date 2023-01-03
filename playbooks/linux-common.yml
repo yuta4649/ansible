@@ -3,4 +3,3 @@
   roles:
     - { role: linux/group, tags: ['group'] }
     - { role: linux/user, tags: ['user'] }
-    - { role: linux/sudoers, tags: ['sudoers'] }
