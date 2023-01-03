@@ -16,8 +16,8 @@
 # semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
 #
 #Port 22
-{% for ssh_ports in port_number %}
-Port {{ ssh_ports.port_number }}
+{% for port_number in ssh_ports %}
+Port {{ port_number }}
 {% endfor %}
 #AddressFamily any
 #ListenAddress 0.0.0.0
