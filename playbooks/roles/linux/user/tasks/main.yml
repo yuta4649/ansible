@@ -21,66 +21,66 @@
   loop: "{{ user_list + user_list_extra }}"
   become: true
 
-- name: main | Set init Password
-  user:
-    name: "{{ item.name }}"
-    password: "{{ user_init_password | password_hash }}"
-  when:
-    - item.name != 'root'
-    - item.password_lock is not defined or not item.password_lock
-    - user_init_password is defined
-  loop: "{{ user_list + user_list_extra }}"
-  become: true
+# - name: main | Set init Password
+#   user:
+#     name: "{{ item.name }}"
+#     password: "{{ user_init_password | password_hash }}"
+#   when:
+#     - item.name != 'root'
+#     - item.password_lock is not defined or not item.password_lock
+#     - user_init_password is defined
+#   loop: "{{ user_list + user_list_extra }}"
+#   become: true
 
-- name: Add public_key
-  block:
-  - name: main | Fetch public_key
-    fetch:
-      src: "{{ item.ssh_key_file }}.pub"
-      dest: "{{ role_path }}/files/{{ ansible_hostname }}/{{ item.name }}/id_rsa.pub"
-      flat: yes
-    when:
-      - item.generate_ssh_key is defined
-      - item.state is not defined or item.state == 'present'
-    loop: "{{ user_list + user_list_extra }}"
-    changed_when: false
-    become: true
+# - name: Add public_key
+#   block:
+#   - name: main | Fetch public_key
+#     fetch:
+#       src: "{{ item.ssh_key_file }}.pub"
+#       dest: "{{ role_path }}/files/{{ ansible_hostname }}/{{ item.name }}/id_rsa.pub"
+#       flat: yes
+#     when:
+#       - item.generate_ssh_key is defined
+#       - item.state is not defined or item.state == 'present'
+#     loop: "{{ user_list + user_list_extra }}"
+#     changed_when: false
+#     become: true
   
-  - name: main | List fetched public_key
-    find:
-      paths: "{{ role_path }}/files/"
-      recurse: yes
-    register: user_public_key_list
-    delegate_to: localhost
-    run_once: yes
-    become: true
+#   - name: main | List fetched public_key
+#     find:
+#       paths: "{{ role_path }}/files/"
+#       recurse: yes
+#     register: user_public_key_list
+#     delegate_to: localhost
+#     run_once: yes
+#     become: true
   
-  - name: main | Add authorized_key
-    authorized_key:
-      user: "{{ item.path | dirname | basename }}"
-      state: present
-      key: "{{ lookup('file', item.path }}"
-    loop: "{{ user_public_key_list.files }}"
-    become: true
+#   - name: main | Add authorized_key
+#     authorized_key:
+#       user: "{{ item.path | dirname | basename }}"
+#       state: present
+#       key: "{{ lookup('file', item.path }}"
+#     loop: "{{ user_public_key_list.files }}"
+#     become: true
 
-  - name: main | Delete fetched public_key
-    file:
-      path: "{{ role_path }}/files"
-      state: absent
-    delegate_to: localhost
-    run_once: yes
-    changed_when: false
-    become: true
+#   - name: main | Delete fetched public_key
+#     file:
+#       path: "{{ role_path }}/files"
+#       state: absent
+#     delegate_to: localhost
+#     run_once: yes
+#     changed_when: false
+#     become: true
   
-  - name: main | Modify bash_profile
-    template:
-      src: .bash_profile.j2
-      dest: "{{ '/' if item.name == 'root' else '/home' }}/{{ item.name }}/.bash_profile"
-      owner: "{{ item.name }}"
-      group: "{{ item.group | default(omit) }}"
-      mode: '0644'
-    when:
-      - item.state is not defined or item.state == 'present'
-      - item.system is not defined or not item.system
-    loop: "{{ user_list + user_list_extra }}"
-    become: true
+#   - name: main | Modify bash_profile
+#     template:
+#       src: .bash_profile.j2
+#       dest: "{{ '/' if item.name == 'root' else '/home' }}/{{ item.name }}/.bash_profile"
+#       owner: "{{ item.name }}"
+#       group: "{{ item.group | default(omit) }}"
+#       mode: '0644'
+#     when:
+#       - item.state is not defined or item.state == 'present'
+#       - item.system is not defined or not item.system
+#     loop: "{{ user_list + user_list_extra }}"
+#     become: true
