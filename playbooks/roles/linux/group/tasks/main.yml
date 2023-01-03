@@ -1,0 +1,8 @@
+---
+- name: main | Modify group
+  group:
+    name: "{{ item.name }}"
+    gid: "{{ item.gid | default(omit) }}"
+    state: "{{ item.state | default(omit) }}"
+  loop: "{{ group_list + group_list_extra }}"
+  become: true

@@ -1,0 +1,8 @@
+---
+group_list:
+  - name: azure
+    gid: 1001
+  - name: ansible
+    gid: 1010
+
+group_list_extra: []
