@@ -14,7 +14,7 @@ service_disable_list:
   - lvm2-monitor
   - mcelog
   - mdmonitor
-  - multipathd
+  # - multipathd
   - nis-domainname
   - rhsmcertd
   - selinux-autorelabel-mark
