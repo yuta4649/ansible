@@ -1,0 +1,19 @@
+---
+user_list:
+  - name: root
+    uid: 0
+    group: root
+    home: /root
+    generate_ssh_key: yes
+    ssh_key_file: /root/.ssh/id_rsa
+  - name: azureuser
+    uid: 1001
+    group: azure
+  - name: ansible
+    uid: 1010
+    group: ansible
+    shell: /bin/bash
+    password_lock: yes
+    comment: ansible manager
+
+user_list_extra: []
