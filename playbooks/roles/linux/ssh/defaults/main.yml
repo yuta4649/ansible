@@ -3,3 +3,5 @@ sshd_permit_root_login: without-password
 sshd_challenge_response_authentication: "no"
 
 ssh_ports: []
+
+sshd_optional_strings: []
