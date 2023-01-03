@@ -3,7 +3,7 @@
   systemd:
     name: "{{ item }}"
     state: started
-    enable: yes
+    enabled: yes
   loop: "{{ service_enable_list + service_enable_list_extra }}"
   become: true
 
