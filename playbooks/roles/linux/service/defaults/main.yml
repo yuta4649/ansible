@@ -6,7 +6,7 @@ service_enable_list:
 service_enable_list_extra: []
 
 service_disable_list:
-  - auditd
+  # - auditd
   - import-state
   # - iscsi-onboot
   # - iscsi
