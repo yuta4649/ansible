@@ -12,4 +12,4 @@ dir_list:
     path_list:
       - /wells/log/seclog
 
-dir_list_extra:
+dir_list_extra: []
