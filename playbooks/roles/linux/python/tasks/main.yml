@@ -1,0 +1,12 @@
+---
+- name: main | install python
+  dnf:
+    name: "{{ python_package }}"
+    state: installed
+  become: true
+
+- name: main | Install python dependencies package
+  pip:
+    name: "{{ python_dependencies_package }}"
+    executable: pip3.8
+  become: true

@@ -1,0 +1,9 @@
+---
+python_package: python38-3.8.6-3.module+el8.2.0+5978+503155c0.x86_64
+
+python_dependencies_package:
+  - azure-core
+  - azure-common
+  - azure-storage-blob
+  - azure-storage-common
+  - azure-mgmt-compute
