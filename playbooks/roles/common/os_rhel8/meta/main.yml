@@ -15,3 +15,4 @@ dependencies:
   - { role: linux/chrony, tags: ['chrony'] }
   - { role: linux/selinux, tags: ['selinux'] }
   - { role: linux/python, tags: ['python'] }
+  - { role: linux/rsync, tags: ['rsync']}
