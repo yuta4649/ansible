@@ -1,1 +1,5 @@
 ---
+user_list_extra:
+  - name: rsync
+    uid: 4001
+    group: rsync
