@@ -49,6 +49,7 @@
     name: "{{ package_rpm_list.files | map(attribute='path') | list }}"
     state: installed
   become: true
+  disable_gpg_check: yes
   when: package_rpm_list.files is defined
 
 - name: main | Delete temporary dir
