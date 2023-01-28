@@ -15,3 +15,6 @@ dir_list_extra:
     mode: '0755'
     path_list:
       - /wells/rsync
+
+install_package_extra:
+  - rsync

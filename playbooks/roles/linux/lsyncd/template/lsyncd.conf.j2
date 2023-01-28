@@ -15,6 +15,15 @@ settings{
 sync{
     default.rsyncssh,
     source="/var/www/html",
-    target = "",
-    targetdir="/tmp/htmlcopy/"
+    target = "rsync@10.0.0.5:/wells/rsync",
+    delete = "running",
+    init = false,
+    exclude={
+        "/data/sha/",
+        "/*/*/*.log
+    },
+    rsync = {
+        archive = true,
+        rsh = "/usr/bin/ssh -p 8022 -i {/home/rsync/.ssh/id_rsa} -o StrictHostKeyChecking=no"
+    }
 }
