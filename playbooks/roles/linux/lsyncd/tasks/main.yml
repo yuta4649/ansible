@@ -1,0 +1,16 @@
+---
+- name: main | Install packages
+  dnf:
+    name: "{{ lsyncd_package }}"
+    state: installed
+  become: true
+
+- name: main | Deploy lsyncd.conf 
+  template:
+    src: lsyncd.conf.j2
+    dest: /etc/lsyncd.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: main | Restart lsyncd
+  become: true
