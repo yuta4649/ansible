@@ -7,3 +7,10 @@ user_list_extra:
 group_list_extra:
   - name: rsync
     gid: 4001
+
+dir_list_extra:
+  - owner: rsync
+    group: rsync
+    mode: '0755'
+    path_list:
+      - /wells/rsync
