@@ -1,5 +1,7 @@
 ---
 dependencies:
+  - { role: linux/group, tags: ['group'] }
+  - { role: linux/user, tags: ['user'] }
   - { role: linux/hosts, tags: ['hosts'] }
   - { role: linux/hostname, tags: ['hostname'] }
   - { role: linux/timezone, tags: ['timezone'] }
