@@ -12,10 +12,8 @@ settings{
     statusInterval = 1,
     insist = 1,
 }
-sync{
+sync_base{
     default.rsyncssh,
-    source="/wells/rsync",
-    target = "rsync@linux-tst01:/wells/rsync",
     delete = "running",
     init = false,
     exclude={
@@ -26,4 +24,10 @@ sync{
         archive = true,
         rsh = "/usr/bin/ssh -i /home/rsync/.ssh/id_rsa -o StrictHostKeyChecking=no -p 8022"
     }
+}
+
+sync{
+    sync_base,
+    source="/wells/rsync",
+    target = "rsync@linux-tst01:/wells/rsync",
 }
