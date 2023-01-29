@@ -12,8 +12,9 @@ settings{
     statusInterval = 1,
     insist = 1,
 }
+
 sync_base{
-    default.rsyncssh,
+    default.rsync,
     delete = "running",
     init = false,
     exclude={
