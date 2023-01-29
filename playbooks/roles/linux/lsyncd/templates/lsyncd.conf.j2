@@ -14,7 +14,7 @@ settings{
 }
 sync{
     default.rsyncssh,
-    source="/var/www/html",
+    source="/wells/rsync",
     target = "rsync@linux-txt01:/wells/rsync",
     delete = "running",
     init = false,
@@ -24,6 +24,6 @@ sync{
     },
     rsync = {
         archive = true,
-        rsh = "/usr/bin/ssh -i {/home/rsync/.ssh/id_rsa} -o StrictHostKeyChecking=no -p 8022"
+        rsh = "/usr/bin/ssh -i /home/rsync/.ssh/id_rsa -o StrictHostKeyChecking=no -p 8022"
     }
 }
