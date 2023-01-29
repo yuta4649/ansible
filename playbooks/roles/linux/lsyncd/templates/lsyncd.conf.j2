@@ -24,6 +24,6 @@ sync{
     },
     rsync = {
         archive = true,
-        rsh = "/usr/bin/ssh -p 8022 -i {/home/rsync/.ssh/id_rsa} -o StrictHostKeyChecking=no"
+        rsh = "/usr/bin/ssh -i {/home/rsync/.ssh/id_rsa} -o StrictHostKeyChecking=no -p 8022"
     }
 }
