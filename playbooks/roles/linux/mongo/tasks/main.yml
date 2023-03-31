@@ -1,1 +1,6 @@
 ---
+- name: main | Inport GPG Key
+  rpm_key:
+    key_file: /path/to/mongodb-org-4.4.asc
+    state: present
+  become: true

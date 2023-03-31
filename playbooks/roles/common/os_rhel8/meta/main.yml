@@ -18,3 +18,4 @@ dependencies:
   - { role: linux/selinux, tags: ['selinux'] }
   - { role: linux/python, tags: ['python'] }
   - { role: linux/rsync, tags: ['rsync']}
+  - { role: linux/mongo, tags: ['mongo']}
