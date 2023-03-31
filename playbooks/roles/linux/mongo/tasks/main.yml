@@ -1,6 +1,6 @@
 ---
 - name: main | Inport GPG Key
   rpm_key:
-    key: {{ mogno_gpg_key_url }}
+    key: "{{ mogno_gpg_key_url }}"
     state: present
   become: true
