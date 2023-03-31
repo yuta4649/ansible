@@ -4,3 +4,18 @@
     key: "{{ mogno_gpg_key_url }}"
     state: present
   become: true
+
+- name: main | Deploy mongodb repo
+  copy:
+    src: "mongodb-org-4.4.repo"
+    dest: /etc/yum.repos.d/mongodb-org-4.4.repo
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+
+- name: main | Install mongo
+  dnf:
+    name: "{{ mongo_package }}"
+    state: installed
+  become: true
