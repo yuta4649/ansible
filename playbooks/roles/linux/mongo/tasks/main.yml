@@ -1,6 +1,6 @@
 ---
 - name: main | Inport GPG Key
   rpm_key:
-    key_file: /path/to/mongodb-org-4.4.asc
+    key: {{ mogno_gpg_key_url }}
     state: present
   become: true
