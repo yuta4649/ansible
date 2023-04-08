@@ -22,6 +22,10 @@
   notify: "main | Enable mongod service"
   become: true
 
+- name: main | Deploy mongod conf
+  template: wakarimaistakniminonoonononmukouhohoutsimasitawakarimaisatknaisinnoonon
+    
+
 # - name: Replica Set
 #   block:
 #     - name: main | replicaset
