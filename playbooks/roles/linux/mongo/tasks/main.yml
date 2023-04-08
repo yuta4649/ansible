@@ -19,6 +19,7 @@
         name: "{{ mongo_package }}"
         state: installed
       when: not ansible_check_mode
+  notify: "main | Enable mongod service"
   become: true
 
 - name: Replica Set
