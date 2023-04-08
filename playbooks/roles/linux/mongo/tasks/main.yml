@@ -19,11 +19,17 @@
         name: "{{ mongo_package }}"
         state: installed
       when: not ansible_check_mode
-  notify: "main | Enable mongod service"
   become: true
 
 - name: main | Deploy mongod conf
-  template: wakarimaistakniminonoonononmukouhohoutsimasitawakarimaisatknaisinnoonon
+  template:
+    src: mongod.conf.j2
+    dest: /etc/mongod.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: "main | Enable mongod service"
+  become: true
     
 
 # - name: Replica Set
