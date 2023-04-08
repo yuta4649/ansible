@@ -1,5 +1,5 @@
 ---
-- name: main | Enable mongod service
+- name: main | Restart mongod service
   systemd:
     name: mongod
     state: started

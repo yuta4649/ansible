@@ -21,7 +21,7 @@
       when: not ansible_check_mode
   become: true
 
-- name: main | Deploy mongod conf
+- name: main | Restart mongod conf
   template:
     src: mongod.conf.j2
     dest: /etc/mongod.conf
