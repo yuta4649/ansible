@@ -21,3 +21,6 @@ ssh_ports:
 
 install_package_extra:
   - rsync
+
+# mongo replica set task 実行フラグ
+is_primary_db: true

@@ -20,3 +20,8 @@
         state: installed
       when: not ansible_check_mode
   become: true
+
+- name: Replica Set
+  block:
+    - name: main | replicaset
+  when: "{{ is_primary_db }}"
