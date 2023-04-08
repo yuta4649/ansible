@@ -1,5 +1,5 @@
 ---
-- name: main | install python
+- name: main | Install python
   dnf:
     name: "{{ python_package }}"
     state: installed
@@ -9,4 +9,24 @@
   pip:
     name: "{{ python_dependencies_package }}"
     executable: pip3.8
+  become: true
+
+- name: main | Deploy python symbolic link
+  file:
+    src: "{{ shell_dir }}/python3"
+    dest: "{{ shell_dir }}/python"
+    owner: root
+    group: root
+    mode: "0644"
+    state: link
+  become: true
+
+- name: main | Deploy pip symbolic link
+  file:
+    src: "{{ shell_dir }}/pip3"
+    dest: "{{ shell_dir }}/pip"
+    owner: root
+    group: root
+    mode: "0644"
+    state: link
   become: true
