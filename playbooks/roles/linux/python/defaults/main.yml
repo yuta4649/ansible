@@ -8,4 +8,4 @@ python_dependencies_package:
   # - azure-storage-common
   - azure-mgmt-compute
 
-shell_dir: []
+shell_dir: /usr/bin
