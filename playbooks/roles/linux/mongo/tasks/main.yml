@@ -1,7 +1,7 @@
 ---
 - name: Install mongodb
   block:
-    - name: main | Inport GPG Key
+    - name: main | Import GPG Key
       rpm_key:
         key: "{{ mogno_gpg_key_url }}"
         state: present
