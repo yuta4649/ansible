@@ -22,7 +22,7 @@
   notify: "main | Enable mongod service"
   become: true
 
-- name: Replica Set
-  block:
-    - name: main | replicaset
-  when: "{{ is_primary_db }}"
+# - name: Replica Set
+#   block:
+#     - name: main | replicaset
+#   when: "{{ is_primary_db }}"
