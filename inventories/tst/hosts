@@ -4,6 +4,10 @@ linux-ca01
 [linux-tst01]
 linux-tst01
 
+[linux-tst02]
+linux-tst02
+
 [linux:children]
 linux-ca01
 linux-tst01
+linux-tst02

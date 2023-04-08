@@ -1,0 +1,4 @@
+---
+- hosts: linux-tst02
+  roles: 
+    - { role: common/os_rhel8, tags: ['common']}
