@@ -18,5 +18,5 @@
       dnf:
         name: "{{ mongo_package }}"
         state: installed
+      when: not check_mode
   become: true
-  when: not check_mode
