@@ -21,14 +21,14 @@
       when: not ansible_check_mode
   become: true
 
-- name: main | Restart mongod conf
+- name: main | Deploy mongod conf
   template:
     src: mongod.conf.j2
     dest: /etc/mongod.conf
     owner: root
     group: root
     mode: "0644"
-  notify: "main | Enable mongod service"
+  notify: "main | Restart mongod service"
   become: true
     
 
