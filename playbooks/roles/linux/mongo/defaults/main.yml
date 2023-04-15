@@ -2,3 +2,8 @@
 mogno_gpg_key_url: https://www.mongodb.org/static/pgp/server-4.4.asc
 
 mongo_package: mongodb-org
+
+# replica set
+mongodb_primary_host: linux_tst01
+mongodb_secondary_host: linux_tst02
+mongodb_arbiter_host: linux_ca01
