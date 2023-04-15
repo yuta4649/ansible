@@ -36,7 +36,7 @@
     login_host: localhost
     login_user: admin
     login_password: {{ mongo_admin_password }}
-    replica_set: rs_sample
+    replica_set: rs0
     members:
     - host: "{{ mongodb_primary_host }}"
       priority: 1
