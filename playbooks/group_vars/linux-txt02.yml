@@ -1,3 +1,0 @@
----
-# mongo replica set task 実行フラグ
-is_primary_db: false

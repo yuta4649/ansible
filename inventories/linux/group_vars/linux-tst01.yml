@@ -1,3 +1,27 @@
 ---
 install_package_extra:
   - nfs-utils
+  - rsync
+
+user_list_extra:
+  - name: rsync
+    uid: 4001
+    group: rsync
+
+group_list_extra:
+  - name: rsync
+    gid: 4001
+
+dir_list_extra:
+  - owner: rsync
+    group: rsync
+    mode: '0755'
+    path_list:
+      - /wells/rsync
+
+ssh_ports:
+  - 22
+  - 8022
+
+# mongo replica set task 実行フラグ
+is_primary_db: true
