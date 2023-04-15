@@ -31,8 +31,19 @@
   notify: "main | Restart mongod service"
   become: true
     
-
-# - name: Replica Set
-#   block:
-#     - name: main | replicaset
-#   when: "{{ is_primary_db }}"
+- name: main | Replica Set
+  community.mongodb.mongodb_replicaset:
+    login_host: localhost
+    login_user: admin
+    login_password: {{ mongo_admin_password }}
+    replica_set: rs_sample
+    members:
+    - host: "{{ mongodb_primary_host }}"
+      priority: 1
+    - host: "{{ mongodb_secondary_host }}"
+      priority: 0
+    - host: "{{ mongodb_arbiter_host }}"
+      priority: 0
+    arbiter_at_index: 2
+  when: mongo_admin_password is defined
+  become: true
