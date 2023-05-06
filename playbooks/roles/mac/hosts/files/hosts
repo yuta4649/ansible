@@ -7,3 +7,12 @@
 127.0.0.1	localhost
 255.255.255.255	broadcasthost
 ::1             localhost
+# Added by Docker Desktop
+# To allow the same kube context to work on the host and the container:
+127.0.0.1 kubernetes.docker.internal
+# End of section
+
+# Azure VM
+52.140.192.217  linux-ca01
+20.222.153.82   linux-tst01
+20.89.103.96    linux-tst02
