@@ -1,1 +1,4 @@
 ---
+keycloak_relalm_list:
+  - official
+  - stable

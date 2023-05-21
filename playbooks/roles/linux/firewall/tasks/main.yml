@@ -1,5 +1,4 @@
 ---
-
 - name: main | Manage outbound rules
   template:
     src: direct.xml.j2
