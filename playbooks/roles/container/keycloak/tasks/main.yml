@@ -5,11 +5,12 @@
     auth_realm: master
     auth_username: USERNAME
     auth_password: PASSWORD
-    id: realm
-    realm: realm
+    id: "{{ item }}"
+    realm: "{{ item }}"
     sso_session_idle_timeout: 1
     sso_session_max_lifespan: 1
     state: present
+  loop: "{{ keycloak_relalm_list }}"
 
 - name: Create LDAP user federation
   community.general.keycloak_user_federation:
