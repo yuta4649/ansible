@@ -1,4 +1,2 @@
 ---
-keycloak_relalm_list:
-  - official
-  - stable
+keycloak_relalm_name: demo
