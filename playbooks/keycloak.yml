@@ -1,0 +1,4 @@
+---
+- hosts: keycloak
+  roles: 
+    - { role: container/keycloak, tags: ['keycloak']}
