@@ -4,12 +4,59 @@
     auth_client_id: admin-cli
     auth_keycloak_url: "{{ keycloak_base_url }}"
     auth_realm: master
-    auth_username: admin
-    auth_password: admin
+    auth_username: "{{ keycloak_auth_username }}"
+    auth_password: "{{ keycloak_auth_password }}"
     id: "{{ keycloak_relalm_name }}"
     realm: "{{ keycloak_relalm_name }}"
     state: present
     login_theme: "{{ keycloak_login_theme }}"
     sso_session_idle_timeout: 86400
     sso_session_max_lifespan: 86400
+    validate_certs: false
+
+- name: Create LDAP user federation
+  community.general.keycloak_user_federation:
+    auth_keycloak_url: "{{ keycloak_base_url }}"
+    auth_realm: master
+    auth_username: "{{ keycloak_auth_username }}"
+    auth_password: "{{ keycloak_auth_password }}"
+    realm: "{{ keycloak_relalm_name }}"
+    name: freeipa
+    state: present
+    provider_id: ldap
+    provider_type: org.keycloak.storage.UserStorageProvider
+    config:
+      enabled: true
+      cachePolicy: DEFAULT
+      batchSizeForSync: 1000
+      editMode: READ_ONLY
+      importEnabled: true
+      syncRegistrations: false
+      vendor: other
+      usernameLDAPAttribute: uid
+      rdnLDAPAttribute: uid
+      uuidLDAPAttribute: entryUUID
+      userObjectClasses: inetOrgPerson, organizationalPerson
+      connectionUrl: ldaps://ldap.example.com:636
+      usersDn: ou=Users,dc=example,dc=com
+      authType: simple
+      bindDn: cn=directory reader
+      bindCredential: password
+      searchScope: 1
+      validatePasswordPolicy: false
+      trustEmail: false
+      useTruststoreSpi: ldapsOnly
+      connectionPooling: true
+      pagination: true
+      allowKerberosAuthentication: false
+      debug: false
+      useKerberosForPasswordAuthentication: false
+    mappers:
+      - name: "full name"
+        providerId: "full-name-ldap-mapper"
+        providerType: "org.keycloak.storage.ldap.mappers.LDAPStorageMapper"
+        config:
+          ldap.full.name.attribute: cn
+          read.only: true
+          write.only: false
     validate_certs: false
