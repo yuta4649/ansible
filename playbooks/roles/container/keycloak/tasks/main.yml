@@ -9,6 +9,7 @@
     id: demo
     realm: demo
     state: present
+    login_theme: keycloak
     sso_session_idle_timeout: 86400
     sso_session_max_lifespan: 86400
     validate_certs: false
