@@ -1,2 +1,4 @@
 ---
 keycloak_relalm_name: demo
+keycloak_base_url: "https://keycloak.example.com"
+keycloak_login_theme: keycloak
