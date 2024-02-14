@@ -2,3 +2,4 @@
 - hosts: mac-mini
   roles: 
     - { role: common/os_m2, tags: ['common']}
+    - { role: container/keycloak, tags: ['keycloak'] }

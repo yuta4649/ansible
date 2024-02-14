@@ -2,11 +2,13 @@
 - name: main | Create or update Keycloak realm
   community.general.keycloak_realm:
     auth_client_id: admin-cli
-    auth_keycloak_url: https://keycloak.example.com/auth
+    auth_keycloak_url: https://keycloak.example.com
     auth_realm: master
     auth_username: admin
     auth_password: admin
     id: demo
-    realm: demo_test
+    realm: demo
     state: present
+    sso_session_idle_timeout: 86400
+    sso_session_max_lifespan: 86400
     validate_certs: false
