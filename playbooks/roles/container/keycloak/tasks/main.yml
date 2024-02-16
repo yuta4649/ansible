@@ -56,3 +56,19 @@
           read.only: true
           write.only: false
     validate_certs: false
+
+- name: main | Apply SAML identity provider
+  community.general.keycloak_identity_provider:
+    state: present
+    auth_keycloak_url: "{{ keycloak_base_url }}"
+    auth_realm: master
+    auth_username: "{{ keycloak_auth_username }}"
+    auth_password: "{{ keycloak_auth_password }}"
+    realm: "{{ keycloak_relalm_name }}"
+    alias: saml
+    enabled: true
+    provider_id: saml
+    config:
+      entityId: https://keycloak.example.com/realms/demo
+      singleSignOnServiceUrl: https://idp.example.com/login
+    validate_certs: false
