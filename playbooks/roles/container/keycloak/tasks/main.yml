@@ -24,33 +24,29 @@
     name: freeipa
     state: present
     provider_id: ldap
-    provider_type: org.keycloak.storage.UserStorageProvider
     config:
       enabled: true
-      cachePolicy: DEFAULT
-      batchSizeForSync: 1000
-      editMode: READ_ONLY
-      importEnabled: true
-      syncRegistrations: false
+      # General option
       vendor: other
-      usernameLDAPAttribute: uid
-      rdnLDAPAttribute: uid
-      uuidLDAPAttribute: entryUUID
-      userObjectClasses: inetOrgPerson, organizationalPerson
+      # Connection and authentication settings
       connectionUrl: ldaps://ldap.example.com:636
-      usersDn: ou=Users,dc=example,dc=com
+      connectionPooling: false
       authType: simple
       bindDn: cn=directory reader
       bindCredential: password
-      searchScope: 1
-      validatePasswordPolicy: false
-      trustEmail: false
-      useTruststoreSpi: ldapsOnly
-      connectionPooling: true
-      pagination: true
-      allowKerberosAuthentication: false
-      debug: false
-      useKerberosForPasswordAuthentication: false
+      # LDAP searching and updating
+      editMode: READ_ONLY
+      usersDn: ou=Users,dc=example,dc=com
+      usernameLDAPAttribute: uid
+      rdnLDAPAttribute: uid
+      uuidLDAPAttribute: entryDN
+      userObjectClasses: inetOrgPerson, organizationalPerson
+      pagination: false
+      # Synchronization settings
+      importEnabled: true
+      # Kerberos integration
+      # Cache settings
+      # Advanced settings
     mappers:
       - name: "full name"
         providerId: "full-name-ldap-mapper"
