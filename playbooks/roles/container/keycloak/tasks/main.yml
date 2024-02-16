@@ -14,7 +14,7 @@
     sso_session_max_lifespan: 86400
     validate_certs: false
 
-- name: Create LDAP user federation
+- name: main | Apply LDAP user federation
   community.general.keycloak_user_federation:
     auth_keycloak_url: "{{ keycloak_base_url }}"
     auth_realm: master
