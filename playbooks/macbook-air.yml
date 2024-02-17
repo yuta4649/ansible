@@ -1,0 +1,5 @@
+---
+- hosts: macbook-air
+  roles: 
+    - { role: common/os_m2, tags: ['common']}
+    - { role: container/keycloak, tags: ['keycloak'] }
