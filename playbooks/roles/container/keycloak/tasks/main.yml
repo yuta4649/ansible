@@ -70,5 +70,5 @@
     provider_id: saml
     config:
       entityId: https://keycloak.example.com/realms/demo
-      singleSignOnServiceUrl: https://idp.example.com/login
+      singleSignOnServiceUrl: https://login.microsoftonline.com/f3746012-9d9a-4731-a6d7-15491d2b7948/saml2
     validate_certs: false
