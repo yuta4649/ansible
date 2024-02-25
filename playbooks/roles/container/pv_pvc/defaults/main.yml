@@ -1,1 +1,14 @@
 ---
+branch_list:
+  - tky
+  - sng
+  - hkg
+role_list:
+  - planning
+  - banking
+  - trading
+  - sales
+role_list_extra:
+  - xva
+openshift_project_name: tfy01
+nfs_initial_path: tfy01-fors
