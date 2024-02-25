@@ -11,7 +11,7 @@ items:
     - ReadWriteMany
   resources:
     requests:
-      storage: 1Ti
+      storage: 1Gi
   volumeName: {{ nfs_initial_path }}-wells-ope-bin-pv
 {% for branch in branch_list %}
 {% if branch == "tky" %}
@@ -64,7 +64,7 @@ items:
     - ReadWriteMany
   resources:
     requests:
-      storage: 1Ti
+      storage: 1Gi
   volumeName: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-official-dags-{{ role }}-pv
 - apiVersion: v1
   kind: PersistentVolumeClaim
@@ -76,9 +76,23 @@ items:
     - ReadWriteMany
   resources:
     requests:
-      storage: 1Ti
+      storage: 100Gi
   volumeName: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-official-output-{{ role }}-pv
 {% endfor %}
+{% if branch == "tky" or branch == "sng" or branch == "hkg" %}
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: {{ nfs_initial_path }}-share-repli-fors-log-{{ branch }}-indication-official
+    namespace: {{ openshift_project_name }}
+  spec:
+    accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  volumeName: {{ nfs_initial_path }}-share-repli-fors-log-{{ branch }}-indication-official-pv
+{% endif %}
 - apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
