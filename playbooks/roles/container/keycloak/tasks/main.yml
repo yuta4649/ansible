@@ -12,6 +12,7 @@
     login_theme: "{{ keycloak_login_theme }}"
     sso_session_idle_timeout: 86400
     sso_session_max_lifespan: 86400
+    enabled: true
     validate_certs: false
 
 - name: main | Apply LDAP user federation
