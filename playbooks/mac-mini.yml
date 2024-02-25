@@ -3,3 +3,4 @@
   roles: 
     - { role: common/os_m2, tags: ['common']}
     - { role: container/keycloak, tags: ['keycloak'] }
+    - { role: container/pv_pvc, tags: ['pv_pvc'] }

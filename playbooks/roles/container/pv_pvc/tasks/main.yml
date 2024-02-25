@@ -1,1 +1,22 @@
 ---
+## PV PVC onpre manifest
+- name: main | Deploy onpre manifest file
+  block:
+    - name: main | Create directory
+      file:
+        path: "/tmp/pv_pvc/onpre"
+        mode: "0755"
+        state: directory
+    
+    - name: main | Deploy onpre pv file
+      template:
+        src: pv.yaml.j2
+        dest: /tmp/pv_pvc/onpre/pv.yaml
+        mode: '0644'
+
+    - name: main | Deploy onpre pvc file
+      template:
+        src: pvc.yaml.j2
+        dest: /tmp/pv_pvc/onpre/pvc.yaml
+        mode: '0644'
+  become: true
