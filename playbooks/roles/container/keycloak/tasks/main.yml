@@ -1,4 +1,5 @@
 ---
+## keycloak realm setting
 - name: main | Create or update Keycloak realm
   community.general.keycloak_realm:
     auth_client_id: admin-cli
@@ -15,6 +16,7 @@
     enabled: true
     validate_certs: false
 
+## keycloak user federation setting
 - name: main | Apply LDAP user federation
   community.general.keycloak_user_federation:
     auth_keycloak_url: "{{ keycloak_base_url }}"
@@ -58,6 +60,7 @@
           write.only: false
     validate_certs: false
 
+## keycloak identity provider setting
 - name: main | Apply SAML identity provider
   community.general.keycloak_identity_provider:
     state: present
