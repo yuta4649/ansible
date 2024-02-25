@@ -18,6 +18,32 @@ items:
   {%- set role_list = role_list + role_list_extra -%}
 {% endif %}
 {% for role in role_list %}
+{% for production_tag in production_tag_list %}
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-{{ production_tag }}-dags-{{ role }}
+    namespace: {{ openshift_project_name }}
+  spec:
+    accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-{{ production_tag }}-dags-{{ role }}-pv
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-{{ production_tag }}-output-{{ role }}
+    namespace: {{ openshift_project_name }}
+  spec:
+    accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-{{ production_tag }}-output-{{ role }}-pv
+{% endfor %}
 - apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
@@ -54,30 +80,6 @@ items:
     requests:
       storage: 1Ti
   volumeName: {{ nfs_initial_path }}-share-non-repli-fors-data-{{ branch }}-jupyter-notebook-users-{{ role }}-pv
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    name: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-official-dags-{{ role }}
-    namespace: {{ openshift_project_name }}
-  spec:
-    accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Gi
-  volumeName: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-official-dags-{{ role }}-pv
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    name: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-official-output-{{ role }}
-    namespace: {{ openshift_project_name }}
-  spec:
-    accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  volumeName: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-official-output-{{ role }}-pv
 {% endfor %}
 {% if branch == "tky" or branch == "sng" or branch == "hkg" %}
 - apiVersion: v1

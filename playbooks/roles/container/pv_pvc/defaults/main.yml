@@ -12,3 +12,6 @@ role_list_extra:
   - xva
 openshift_project_name: tfy01
 nfs_initial_path: tfy01-fors
+production_tag_list:
+  - official
+  - stable
