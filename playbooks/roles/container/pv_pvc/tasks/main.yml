@@ -20,3 +20,25 @@
         dest: /tmp/pv_pvc/onpre/pvc.yaml
         mode: '0644'
   become: true
+
+## PV PVC cloud manifest
+- name: main | Deploy cloud manifest file
+  block:
+    - name: main | Create directory
+      file:
+        path: "/tmp/pv_pvc/cloud"
+        mode: "0755"
+        state: directory
+    
+    - name: main | Deploy cloud pv file
+      template:
+        src: pv_cloud.yaml.j2
+        dest: /tmp/pv_pvc/cloud/pv.yaml
+        mode: '0644'
+
+    - name: main | Deploy cloud pvc file
+      template:
+        src: pvc_cloud.yaml.j2
+        dest: /tmp/pv_pvc/cloud/pvc.yaml
+        mode: '0644'
+  become: true
