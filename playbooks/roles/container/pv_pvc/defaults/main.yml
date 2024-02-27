@@ -16,3 +16,7 @@ nfs_initial_path: tfy01-fors
 production_tag_list:
   - official
   - stable
+onpre_container_list:
+  - common
+  - airflow
+  - jupyter

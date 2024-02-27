@@ -10,14 +10,14 @@
     
     - name: main | Deploy onpre pv file
       template:
-        src: pv.yaml.j2
-        dest: /tmp/pv_pvc/onpre/pv.yaml
+        src: airflow/pv.yaml.j2
+        dest: /tmp/pv_pvc/onpre/airflow-pv.yaml
         mode: '0644'
 
     - name: main | Deploy onpre pvc file
       template:
-        src: pvc.yaml.j2
-        dest: /tmp/pv_pvc/onpre/pvc.yaml
+        src: airflow/pvc.yaml.j2
+        dest: /tmp/pv_pvc/onpre/airflow-pvc.yaml
         mode: '0644'
   become: true
 
