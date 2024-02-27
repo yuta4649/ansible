@@ -81,7 +81,7 @@ items:
       storage: 1Ti
   volumeName: {{ nfs_initial_path }}-share-non-repli-fors-data-{{ branch }}-jupyter-notebook-users-{{ role }}-pv
 {% endfor %}
-{% if branch == "tky" or branch == "sng" or branch == "hkg" %}
+{% if (branch == "tky" or branch == "sng" or branch == "hkg") and system_name == "fors" %}
 - apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
