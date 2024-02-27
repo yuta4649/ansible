@@ -43,6 +43,30 @@ items:
     requests:
       storage: 100Gi
   volumeName: {{ nfs_initial_path }}-share-repli-fors-data-{{ branch }}-airflow-{{ production_tag }}-output-{{ role }}-pv
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: {{ nfs_initial_path }}-share-repli-fors-cloud-data-{{ branch }}-airflow-{{ production_tag }}-dags-{{ role }}
+    namespace: {{ openshift_project_name }}
+  spec:
+    accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: {{ nfs_initial_path }}-share-repli-fors-cloud-data-{{ branch }}-airflow-{{ production_tag }}-dags-{{ role }}-pv
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: {{ nfs_initial_path }}-share-repli-fors-cloud-data-{{ branch }}-airflow-{{ production_tag }}-output-{{ role }}
+    namespace: {{ openshift_project_name }}
+  spec:
+    accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: {{ nfs_initial_path }}-share-repli-fors-cloud-data-{{ branch }}-airflow-{{ production_tag }}-output-{{ role }}-pv
 {% endfor %}
 - apiVersion: v1
   kind: PersistentVolumeClaim
@@ -80,6 +104,42 @@ items:
     requests:
       storage: 1Ti
   volumeName: {{ nfs_initial_path }}-share-non-repli-fors-data-{{ branch }}-jupyter-notebook-users-{{ role }}-pv
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: {{ nfs_initial_path }}-share-repli-si-fors-cloud-data-{{ branch }}-jupyter-notebook-users-{{ role }}
+    namespace: {{ openshift_project_name }}
+  spec:
+    accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Ti
+  volumeName: {{ nfs_initial_path }}-share-repli-si-fors-cloud-data-{{ branch }}-jupyter-notebook-users-{{ role }}-pv
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: {{ nfs_initial_path }}-share-repli-si-fors-cloud-data-{{ branch }}-jupyter-notebook-roles-{{ role }}
+    namespace: {{ openshift_project_name }}
+  spec:
+    accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Ti
+  volumeName: {{ nfs_initial_path }}-share-repli-si-fors-cloud-data-{{ branch }}-jupyter-notebook-roles-{{ role }}-pv
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: {{ nfs_initial_path }}-share-non-repli-fors-cloud-data-{{ branch }}-jupyter-notebook-users-{{ role }}
+    namespace: {{ openshift_project_name }}
+  spec:
+    accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Ti
+  volumeName: {{ nfs_initial_path }}-share-non-repli-fors-cloud-data-{{ branch }}-jupyter-notebook-users-{{ role }}-pv
 {% endfor %}
 {% if (branch == "tky" or branch == "sng" or branch == "hkg") and system_name == "fors" %}
 - apiVersion: v1
