@@ -51,13 +51,21 @@
       # Cache settings
       # Advanced settings
     mappers:
-      - name: "full name"
-        providerId: "full-name-ldap-mapper"
+      - name: "gidNumber"
+        providerId: "user-attribute-ldap-mapper"
         providerType: "org.keycloak.storage.ldap.mappers.LDAPStorageMapper"
         config:
-          ldap.full.name.attribute: cn
-          read.only: true
-          write.only: false
+          ldap.attribute: "gidNumber"
+          user.model.attribute: "gidNumber"
+          read.only: false
+      - name: "group"
+        providerId: "group-ldap-mapper"
+        providerType: "org.keycloak.storage.ldap.mappers.LDAPStorageMapper"
+        config:
+          groups.dn: "ou=Groups,dc=example,dc=com"
+          preserve.group.inheritance: false
+          mode: "LDAP_ONLY"
+          mapped.group.attribute: "gidNumber"
     validate_certs: false
 
 ## keycloak identity provider setting
