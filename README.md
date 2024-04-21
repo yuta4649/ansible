@@ -7,6 +7,7 @@ os=mac
 # linux-ca.yml/mac-mini.yml ...
 playbook=macbook-air.yml
 # keycloak/pv_pvc ...
-tag=keycloak
-ansible-playbook -i inventories/$os playbooks/$playbook -v --diff --tags $keycloak
+role=keycloak
+
+ansible-playbook -i inventories/$os playbooks/$playbook -v --diff --tags $role
 ```
